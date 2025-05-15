@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(  brightness: Brightness.dark
+          ,scaffoldBackgroundColor: Color(0xFF0D0C1D)
+        ,
       ),
       home: NotesView(),
 
