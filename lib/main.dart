@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/Views/Notes_View.dart';
+import '';
 
-void main() {
+void main() async{
+  await Hive.init();
   runApp(const MyApp());
 }
 
