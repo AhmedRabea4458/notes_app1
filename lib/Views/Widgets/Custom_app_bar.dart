@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Custom_Icon.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key
@@ -7,8 +6,6 @@ class CustomAppBar extends StatelessWidget {
   ,required this.icon});
   final String Title;
   final IconData icon;
-
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,18 +14,11 @@ class CustomAppBar extends StatelessWidget {
           style: TextStyle(fontSize: 28,
           ),
         ),
-
         Spacer(),
         CustomSearchIcon(icon: icon),
 
       ],
-      
-      
-      
-      
     );
-        
-      
-    
+
   }
 }
