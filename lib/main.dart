@@ -5,6 +5,7 @@ import 'package:untitled2/Views/Notes_View.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:untitled2/Views/Widgets/Constants.dart';
 import 'package:untitled2/simple_bloc_observer.dart';
+import 'Cubits/notes_cubit.dart';
 import 'Models/note_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,13 +13,18 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
-  await Hive.deleteBoxFromDisk(kNotesBox);
+
  await Hive.openBox<NoteModel>(kNotesBox);
 
   Bloc.observer=SimpleBlocObserver();
 
 
-  runApp(const MyApp());
+  runApp( MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => NotesCubit()..fetchAllNotes()),
+        BlocProvider(create: (_) => AddNoteCubit()),
+      ],
+     child:  const MyApp()),);
 }
 
 class MyApp extends StatelessWidget {

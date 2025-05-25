@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:untitled2/Cubits/notes_cubit.dart';
+import '../../Cubits/notes_cubit.dart';
 import 'Custom_app_bar.dart';
 import 'Custom_note_item.dart';
 import 'Notes_list_view.dart';
@@ -13,10 +13,12 @@ class NotesViewBody extends StatefulWidget {
 }
 
 class _NotesViewBodyState extends State<NotesViewBody> {
-void intistate(){
-  BlocProvider.of<NotesCubit>(context).fechAllNotes();
-  super.initState();
-}
+  @override
+  void initState() {
+    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
