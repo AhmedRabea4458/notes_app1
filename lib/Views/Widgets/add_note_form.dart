@@ -48,8 +48,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 print("Add button pressed");
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
-                  String formattedDate =
-                  DateFormat.yMMMMd('ar').format(DateTime.now());
+                  var currentdate=DateTime.now();
+                  var formattedDate =
+                  DateFormat.yMMMMd().format(DateTime.now());
                   var notemodel = NoteModel(title: title!,
                       subtitle: subtitle!,
                       date:  formattedDate,
