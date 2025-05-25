@@ -3,14 +3,13 @@ part of 'notes_cubit.dart';
 @immutable
 sealed class NotesState {}
 
-final class NotesInitial extends NotesState {}
-final class NotesLoading extends NotesCubit {}
-final class NotesSuccess extends NotesCubit {
+ class NotesInitial extends NotesState {}
+ class NotesLoading extends NotesCubit {}
+class NotesSuccess extends NotesState {
   final List<NoteModel>notes;
   NotesSuccess(this.notes);
 }
-final class NotesFailure extends NotesCubit {
+class NotesFailure extends NotesState {
   final String errMessage;
   NotesFailure(this.errMessage);
 }
-
