@@ -24,7 +24,7 @@ class AddNoteBottomSheet extends StatelessWidget {
                 Navigator.pop(context);
               }
 
-              // TODO: implement listener
+
              },
             builder: (context, state) {
               return ModalProgressHUD(
