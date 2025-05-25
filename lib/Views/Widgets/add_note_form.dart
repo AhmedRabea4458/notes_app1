@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled2/Cubits/add_note_cubit.dart';
 import 'package:untitled2/Models/note_model.dart';
 import 'package:intl/intl.dart';
-
 import 'Custom _text_field.dart';
 import 'Custom_Button.dart';
 
@@ -39,13 +38,16 @@ class _AddNoteFormState extends State<AddNoteForm> {
           , MaxLines: 5,
         ),
         const SizedBox(height: 32),
+       ColorListView(),
         BlocBuilder<AddNoteCubit, AddNoteState>(
+
           builder: (context, state) {
+
             return CustomButton(
               isloading: state is AddNoteLoading?true:false,
 
               onTap: () {
-                print("Add button pressed");
+
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
                   var currentdate=DateTime.now();
@@ -69,6 +71,34 @@ class _AddNoteFormState extends State<AddNoteForm> {
         const SizedBox(height: 24),
       ],
 
+      ),
+    );
+  }
+}
+class ColorItem extends StatelessWidget {
+  const ColorItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const  CircleAvatar(
+      radius: 38,
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+class ColorListView extends StatelessWidget {
+  const ColorListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 38*2,
+      child: ListView.builder(
+        itemCount: 10,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context,index){
+          return ColorItem();
+        },
       ),
     );
   }
